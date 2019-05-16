@@ -4,7 +4,7 @@ title: inteRise 101: Intro to R
 permalink: /intro-to-R/
 ---
 
-__by Zach Wulderk | zwulderk@interise.org__
+__ by Zach Wulderk | zwulderk@interise.org __
 
 ## The Basics
 ### What is R?
