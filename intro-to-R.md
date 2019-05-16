@@ -4,7 +4,7 @@ title: inteRise 101: Intro to R
 permalink: /intro-to-R/
 ---
 
-# Intro
+{page-title}
 
 ## The Basics
 ### What is R?
