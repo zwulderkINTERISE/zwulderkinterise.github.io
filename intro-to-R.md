@@ -3,7 +3,7 @@ layout: page
 title: inteRise 101: Intro to R
 permalink: /intro-to-R/
 ---
-# inteRise 101: Intro to R  
+# 
 
 __by Zach Wulderk__  
 __zwulderk@interise.org__
