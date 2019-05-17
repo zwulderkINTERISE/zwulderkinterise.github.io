@@ -50,9 +50,9 @@ The console displays output from your code and allows you to run one-off command
   
 __Viewer - 4__  
 The viewer is where you can see your file directory, any graphs or plots you have made, your help window, and more.
----  
+<blockquote>
 >> Tip: If you run into an issue with a function, you can type `?function` into the Console (where `function` is the name of the process you are having an issue with), press Enter, and a help file will appear in the Viewer.  
----  
+</blockquote>  
 
 From this point forward, when I refer to "R," I will generally be referring to RStudio, because this is how we interact with R.
 
@@ -95,10 +95,10 @@ The `<-` operator is basically an arrow assigning everything to its right to the
 
 ### `cars` and vars
 One of the most common objects you'll work with is the dataframe, which is basically a fancy version of an Excel spreadsheet. 
----  
+<blockquote>  
 >> Tip: A common convention in R is to use `df` as the name of a dataframe. If you see an object called `df`, it is a safe assumption that is a dataframe. One way to confirm this is by running `str(df)`, which will show use the **str**ucture of the `df` object. 
----  
-
+</blockquote>  
+  
 R comes with many pre-made tools to test out functionality, and one of them is the `cars` dataframe. To see what it looks like, run `cars` in your Console. Running `str(cars)` confirms that it is a dataframe. Running just `cars` again, you should see three columns printed: one which has no name and is the numbers 1-50, and two columns named `speed` and `dist` with some random numbers. This is just like an Excel sheet, where the numbers on the left are just row numbers and where `speed` and `dist` are columns containing values. 
 
 What if we only wanted to see the `speed` column (or _variable_) inside the `cars` dataframe? This is where the `$` operator comes in. `$` is essentially an extraction operator, which means it looks inside an object and retrieves something from within. It works by looking in the object to its immediate left for something inside it that goes by the name to its immediate right. For example, to extract the `speed` variable from within `cars`, we would run `cars$speed`, which will return only the values of the `speed` variable. 
@@ -149,13 +149,13 @@ cars %<>%
 ```
 This tells are to take `cars`, run the `filter` and `mutate` steps, and store the results back in the object `cars`. You may have noticed that the regular pipe `%>%` points to the right and the assignment operator `<-` points to the left. Because the compound pipe operator `%<>%` is a hybrid of the two, it points to both the right and the left.  
   
----
+<blockquote>
 >> Tip: Lines of code with a `#` at the beginning will be ignored by R. These lines function as comments that allow us to write messages explaining what the code is doing, offering warnings, etc.  
----  
----  
+</blockquote>
   
+<blockquote>  
 >> Tip: If you are running code from a script rather than in the Console, you can run multiple lines at once by highlighting them and pressing 'Run' or ctrl+Enter. You can run the _entire_ script by making sure you have nothing highlighted and pressing 'Run' or ctrl+Enter. In other words, R will run whatever is highlighted unless noting is highlighted, in which case it will run everything.  
----  
----  
- 
+</blockquote>  
+<blockquote>  
 >> Tip: If help files alone are not explaining something clearly, Google is very useful. R has a thriving community online, and you can often find an answer to your question on a StackOverflow post or through some sort of guide, tutorial, or YouTube video. For a more thorough explanation of R in general, see https://adv-r.hadley.nz/, which is an online version of the book 'Advanced R', written by Hadley Wickham. Hadley is a big deal in the R community and is the author of many of the `tidyverse` packages. 
+</blockquote>
