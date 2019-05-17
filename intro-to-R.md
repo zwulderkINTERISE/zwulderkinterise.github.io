@@ -51,7 +51,7 @@ The console displays output from your code and allows you to run one-off command
 __Viewer - 4__  
 The viewer is where you can see your file directory, any graphs or plots you have made, your help window, and more.
 <blockquote>
->> Tip: If you run into an issue with a function, you can type `?function` into the Console (where `function` is the name of the process you are having an issue with), press Enter, and a help file will appear in the Viewer.  
+_**>> Tip:** If you run into an issue with a function, you can type `?function` into the Console (where `function` is the name of the process you are having an issue with), press Enter, and a help file will appear in the Viewer._  
 </blockquote>  
 
 From this point forward, when I refer to "R," I will generally be referring to RStudio, because this is how we interact with R.
