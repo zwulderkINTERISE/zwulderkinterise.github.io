@@ -8,7 +8,7 @@ permalink: /intro-to-R/
 <section class="bs-docs-section">
 
   <h1 id="first-level" class="page-header">inteRise 101: Intro to R</h1>
-
+</section>
 
 
 
@@ -150,4 +150,3 @@ This tells are to take `cars`, run the `filter` and `mutate` steps, and store th
 >>Tip: If you are running code from a script rather than in the Console, you can run multiple lines at once by highlighting them and pressing 'Run' or ctrl+Enter. You can run the _entire_ script by making sure you have nothing highlighted and pressing 'Run' or ctrl+Enter. In other words, R will run whatever is highlighted unless noting is highlighted, in which case it will run everything.  
   
 >>Tip: If help files alone are not explaining something clearly, Google is very useful. R has a thriving community online, and you can often find an answer to your question on a StackOverflow post or through some sort of guide, tutorial, or YouTube video. For a more thorough explanation of R in general, see https://adv-r.hadley.nz/, which is an online version of the book 'Advanced R', written by Hadley Wickham. Hadley is a big deal in the R community and is the author of many of the `tidyverse` packages. 
-</section>
