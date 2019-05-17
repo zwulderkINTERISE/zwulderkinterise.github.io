@@ -32,8 +32,7 @@ __Installing RStudio__
 2. Once the installer is downloaded, run it.
 
 ### Intro to RStudio
-__INSERT IMAGE OF RSTUDIO QUADRANTS__  
-  
+<img src="https://raw.githubusercontent.com/zwulderkINTERISE/misc_assets/master/rstudioquadrants.png" alt="RStudio layout">  
 __File Viewer - 1__  
 Much of the work we do in R is done in the File Viewer. This is where we write the documents containing our code ("R Scripts") and where we can browse our data. Writing scripts allows you to save your code so that you can just press "Run" whenever you need the steps to be re-run.
   
