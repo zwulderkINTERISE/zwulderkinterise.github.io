@@ -96,7 +96,7 @@ The `<-` operator is basically an arrow assigning everything to its right to the
 ### `cars` and vars
 One of the most common objects you'll work with is the dataframe, which is basically a fancy version of an Excel spreadsheet. 
 ---  
->> Tip: A common convention in R is to use `df` as the name of a dataframe. If you see an object called `df`, it is a safe assumption that is a dataframe. One way to confirm this is by running `str(df)`, which will show use the __str__ucture of the `df` object. 
+>> Tip: A common convention in R is to use `df` as the name of a dataframe. If you see an object called `df`, it is a safe assumption that is a dataframe. One way to confirm this is by running `str(df)`, which will show use the **str**ucture of the `df` object. 
 ---  
 
 R comes with many pre-made tools to test out functionality, and one of them is the `cars` dataframe. To see what it looks like, run `cars` in your Console. Running `str(cars)` confirms that it is a dataframe. Running just `cars` again, you should see three columns printed: one which has no name and is the numbers 1-50, and two columns named `speed` and `dist` with some random numbers. This is just like an Excel sheet, where the numbers on the left are just row numbers and where `speed` and `dist` are columns containing values. 
