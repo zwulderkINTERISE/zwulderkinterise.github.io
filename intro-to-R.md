@@ -7,7 +7,7 @@ permalink: /intro-to-R/
 <!-- wrap each main section with "bs-docs-section" class -->
 <section class="bs-docs-section">
 
-  <h1 id="first-level" class="page-header">inteRise 101: Intro to R</h1>
+  <!--<h1 id="first-level" class="page-header">inteRise 101: Intro to R</h1>-->
 </section>
 
 
