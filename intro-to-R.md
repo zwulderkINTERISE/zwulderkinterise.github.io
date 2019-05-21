@@ -149,13 +149,86 @@ cars %<>%
 ```
 This tells are to take `cars`, run the `filter` and `mutate` steps, and store the results back in the object `cars`. You may have noticed that the regular pipe `%>%` points to the right and the assignment operator `<-` points to the left. Because the compound pipe operator `%<>%` is a hybrid of the two, it points to both the right and the left.  
   
+## `grep`, `grepl`, and `gsub`
+There are three primary variants on "Find" or "Find and Replace" in R: `grep`, `grepl`, and `gsub`.   
+  
+### `grep`
+`grep` looks for a given pattern inside a longer object (e.g. a string or list) and tells you where that pattern occurs. The simplied syntax for `grep` is as follows:
+```
+grep(pattern, x, ignore.case = FALSE)
+```
+There are a few things to notice here. What does `pattern` mean? This is where you would include your "Find" argument. For example, if I wanted to search through a list of letters in the alphabet for "z", I would replace `pattern` with `"z"`. However, there are some wrinkles to `pattern` that are useful to know. `grep` and the rest of its family actually search for a regular expression (regex for short) rather than a simple string. __Note: I plan on adding a regular expression guide soon.__ This makes `grep` much more powerful than typical Find functionality in, for example, Excel, but it also means it requires a little more care when using. 
+
+Regexs use certain characters differently than usual. For example, a `.` symbolizes _any_ character in the language of regex. So if I searched for `"do.r"`, it would return a match for `"do re"`, `"door"`, etc. If I added a `?` (the "optional" operator) after the `.`, the "any character" `.` operator would become optional. In that situation, `"do.r"` would still match `"do re"` and `"door"`, but it would also match `"dor"`.
+
+What if you're trying to find something that is used as a special character? For example, what if you're looking to find all of the periods in a list? In that case you would __escape__ the special character to let the regex know that you want to use it in its normal form. In R, we do this by adding two back slashes before the character. In this case, that would like like this: `"\\."`. 
+
+The `x` in the argument syntax above simply stands in for the object you're looking in. If I have a list of letters in the alphabet called `letters`, I could say `grep("z", letters, ignore.case = FALSE)` to find where "z" appears in that list. `grep` returns the _location_ of the match - in this case, `26`, because "z" is the 26th letter in the alphabet (assuming `letters` is in order).
+
+`ignore.case = FALSE` is relatively intuitive. It's an option to be case-sensitive or case-insensitive. By default, `grep` and its family are _case-sentitive_, but this can be changed by replacing `FALSE` with `TRUE`. As with other functions in R, if an argument is shown as having a default in its syntax (denoted by a `=` after the argument in the Usage syntax), it does not need to be included. As a result, `grep("z", letters, ignore.case = FALSE)` and `grep("z", letters")` will work the same way.
+
+An important thing to note about the `grep` family is that the first argument in its syntax is __not__ `x`. In previous examples, we used functions like `mutate` and `filter` which came from the `tidyverse` and had `x` (or an equivalent) as their first argument. This allowed us to pipe objects in to them using `%>%`. Because the first argument in the `grep` family is `'pattern'`, we would either pipe in a pattern or, more commonly, not use a pipe at all. Pipes are particularly useful when working with dataframes and the `tidyverse`, but they are not as useful in other situations.
+
+### `grepl`
+`grepl` is very similar to `grep`. The primary difference is in what they return. While `grep` returns the location of matches by default, `grepl` returns `TRUE` or `FALSE` values. In our example of looking for `"z"` in the alphabet, `grepl("z", letters)` would return `FALSE` 25 times and `TRUE` 1 time. The logical data type, also known as a boolean or binary, is a data type that is only `TRUE` or `FALSE`, only `1` or `0`, only `yes` or `no`, etc. `grepl` is just `grep` with an `l` at the end to represent that it returns a logical value.
+
+### `gsub`
+`grep` and `grepl` answer the "Find" part of "Find and Replace," but `gsub` is the solution to actually finding and replacing. It takes three primary arguments:
+```
+gsub(pattern, replacement, x)
+```
+The first argument, `pattern`, is the same as it is in `grep` and `grepl`. The third argument, `x`, is also the same. The second argument, `replacement`, is pretty self-explanatory and is just the value you wish to replace the `pattern` with. For example, `gsub("t", "x", "testing")` returns `"xesxing"`.
+
+## An important note on `=`
+As with many other programming languages, R uses a single equal sign to mean "is" and a double equal sign to mean "is equal to." The difference is important, because it is the difference between setting an object equal to a value and testing if a statement is true. For example, if we create a variable `x` with a value of `2`, `x == 3` tests if `x` has a value of `3` and would return `FALSE`. `x = 3` would overwrite `x`, giving it a value of `3`. If you wanted to filter the `cars` data to only contain rows with `speed` values equal to `10`, you would write:
+```
+cars %>% filter(speed == 10)
+```
+
+## Merging
+There are several different ways to merge or join objects in R. While there is a base R function called `merge`, my preferred method is using the `join` statements from the `tidyverse`. There are several to choose from depending on your goal (`inner_join`, `left_join`, `right_join`, `full_join`, `semi_join`, `anti_join`, `nest_join`), but the most common is probably `left_join` which functions like the typical `merge` statement. It takes one dataframe and adds another dataframe to it based on a matching key variable or variables as illustrated here:  
+<img src="https://raw.githubusercontent.com/zwulderkINTERISE/misc_assets/master/joins.png" alt="join illustrations">  
+  
+In a `left_join`, all rows from your left (or `x`) dataframe are kept and columns for the right (or `y`) dataframe are added with values based on the key. For example, if we have two dataframes that look like this:  
+```
+df1
+name      age
+Anna      20
+Bob       25
+Chris     30
+```
+and  
+```
+df2
+name      pet
+Anna      dog
+Chris     cat
+```
+we can merge them together using `left_join(df1, df2, by = "name")` where `"name"` is a string containing the name of our key or matching variable. The result would be:  
+```
+name      age      pet
+Anna      20       dog
+Bob       25       NA
+Chris     30       cat
+```
+Notice that in the `pet` column, Bob has a value of `NA`. This is because he is not included in `df2`. `NA` is how missing data is denoted in R.   
+  
+If we had run `left_join(df2, df1, by = "name")`, we would have returned
+```
+name      pet      age
+Anna      dog      20
+Chris     cat      30
+```
+because a `left_join` only returns rows from the left dataframe and that matching columns from the right dataframe.   
+
+  
 <blockquote>
->> Tip: Lines of code with a `#` at the beginning will be ignored by R. These lines function as comments that allow us to write messages explaining what the code is doing, offering warnings, etc.  
+Tip: Lines of code with a `#` at the beginning will be ignored by R. These lines function as comments that allow us to write messages explaining what the code is doing, offering warnings, etc.  
 </blockquote>
   
 <blockquote>  
->> Tip: If you are running code from a script rather than in the Console, you can run multiple lines at once by highlighting them and pressing 'Run' or ctrl+Enter. You can run the _entire_ script by making sure you have nothing highlighted and pressing 'Run' or ctrl+Enter. In other words, R will run whatever is highlighted unless noting is highlighted, in which case it will run everything.  
+Tip: If you are running code from a script rather than in the Console, you can run multiple lines at once by highlighting them and pressing 'Run' or ctrl+Enter. You can run the _entire_ script by making sure you have nothing highlighted and pressing 'Run' or ctrl+Enter. In other words, R will run whatever is highlighted unless noting is highlighted, in which case it will run everything.  
 </blockquote>  
 <blockquote>  
->> Tip: If help files alone are not explaining something clearly, Google is very useful. R has a thriving community online, and you can often find an answer to your question on a StackOverflow post or through some sort of guide, tutorial, or YouTube video. For a more thorough explanation of R in general, see https://adv-r.hadley.nz/, which is an online version of the book 'Advanced R', written by Hadley Wickham. Hadley is a big deal in the R community and is the author of many of the `tidyverse` packages. 
+Tip: If help files alone are not explaining something clearly, Google is very useful. R has a thriving community online, and you can often find an answer to your question on a StackOverflow post or through some sort of guide, tutorial, or YouTube video. For a more thorough explanation of R in general, see https://adv-r.hadley.nz/, which is an online version of the book 'Advanced R', written by Hadley Wickham. Hadley is a big deal in the R community and is the author of many of the `tidyverse` packages. 
 </blockquote>
