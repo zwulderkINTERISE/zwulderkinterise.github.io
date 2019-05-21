@@ -1,6 +1,6 @@
 ---
 layout: page
-title: inteRise 101: Intro to R
+title: Intro to R
 permalink: /intro-to-R/
 ---
 
