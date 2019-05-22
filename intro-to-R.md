@@ -221,7 +221,44 @@ Chris     cat      30
 ```
 because a `left_join` only returns rows from the left dataframe and that matching columns from the right dataframe.   
 
+## Reading and Writing  
   
+### Reading
+There are several different ways to read data into R so that you can work with it. The data we work with typically comes in either CSV (comma-separated values) form or in an Excel file (.xlsx or .xls).  
+  
+__CSVs__  
+Base R includes a useful function for reading in CSVs, aptly called `read.csv`. The relevant usage for our purposes is:
+```
+read.csv(file, header = TRUE)
+```
+Here, `file` refers to a filepath for the CSV file you want to read in. __It is important to note that R (and most other programming languages) uses *forward slashes* for file paths, but the Windows default is back slashes.__ This means that you will have to switch the slash direction in your file paths if you copy them. `header` is set to `TRUE` (the default) if you want to read in the first row as your variable names. Otherwise, it should be set to `FALSE`.
+
+<blockquote>
+>> Tip: There are many packages designed to speed up the reading and writing of data. In most cases, `read.csv` is a sufficient function for reading in CSV data, but if it is taking a very long time or you are encountering errors, consider looking into other packages.
+</blockquote>
+  
+__Excel__
+There are several different packages for reading in Excel files. One great package is `readxl`, and in particular its `read_excel` function, which can read in both .xlsx and .xls files. It works very similarly to `read.csv`, where the `path` in its usage is the same as `file` in `read.csv`. It also has a `sheet` argument, which allows you to specify which sheet you want to read in from your Excel workbook.
+
+### Writing  
+__CSVs__  
+The writing equivalent to `read.csv` is called `write.csv`. For our purposes, its usage can be thought of as follows:
+```
+write.csv(x, file, row.names = TRUE)
+```
+Here, `x` is the object you wish to write as a CSV and `file` is the path you want to write it to. `row.names` is set to `TRUE` by default and creates a column to the left of your CSV numbering the rows (typically). I find this to be unnecessary, especially because we view CSVs in Excel most of the time, where they are already given row numbers. As a result, I tend to set `row.names` to `FALSE` when I write to csv. For example:
+```
+write.csv(df, "C:/Users/interise/Desktop/Cool Data.csv", row.names = FALSE)
+```
+  
+__Excel__  
+As with reading Excel files, there are several packages designed to write Excel files. One option is `write.xlsx` from the `xlsx` package. Similarly to the other examples, it takes an `x` argument for the object you want to write as an xlsx file and a `file` path. It also takes a `sheetName` argument, where you can specify what you want the sheet to be titled in Excel.
+
+<blockquote>
+>> Tip: A way to access a specific function from a specific package is to write `package::function`. For example, accessing the `write.xlsx` function from the `xlsx` package would be written as `xlsx::write.xlsx`. This also works if you have not loaded the package. It is not necessary to write them this way, but there are some cases when it can be useful.
+</blockquote>
+
+
 <blockquote>
 >> Tip: Lines of code with a `#` at the beginning will be ignored by R. These lines function as comments that allow us to write messages explaining what the code is doing, offering warnings, etc.  
 </blockquote>
