@@ -51,7 +51,7 @@ The console displays output from your code and allows you to run one-off command
 __Viewer - 4__  
 The viewer is where you can see your file directory, any graphs or plots you have made, your help window, and more.
 <blockquote>
-_**>> Tip:** If you run into an issue with a function, you can type `?function` into the Console (where `function` is the name of the process you are having an issue with), press Enter, and a help file will appear in the Viewer._  
+>> Tip: If you run into an issue with a function, you can type `?function` into the Console (where `function` is the name of the process you are having an issue with), press Enter, and a help file will appear in the Viewer._  
 </blockquote>  
 
 From this point forward, when I refer to "R," I will generally be referring to RStudio, because this is how we interact with R.
@@ -223,12 +223,11 @@ because a `left_join` only returns rows from the left dataframe and that matchin
 
   
 <blockquote>
-Tip: Lines of code with a `#` at the beginning will be ignored by R. These lines function as comments that allow us to write messages explaining what the code is doing, offering warnings, etc.  
+>> Tip: Lines of code with a `#` at the beginning will be ignored by R. These lines function as comments that allow us to write messages explaining what the code is doing, offering warnings, etc.  
 </blockquote>
-  
 <blockquote>  
-Tip: If you are running code from a script rather than in the Console, you can run multiple lines at once by highlighting them and pressing 'Run' or ctrl+Enter. You can run the _entire_ script by making sure you have nothing highlighted and pressing 'Run' or ctrl+Enter. In other words, R will run whatever is highlighted unless noting is highlighted, in which case it will run everything.  
+>> Tip: If you are running code from a script rather than in the Console, you can run multiple lines at once by highlighting them and pressing 'Run' or ctrl+Enter. You can run the _entire_ script by making sure you have nothing highlighted and pressing 'Run' or ctrl+Enter. In other words, R will run whatever is highlighted unless noting is highlighted, in which case it will run everything.  
 </blockquote>  
 <blockquote>  
-Tip: If help files alone are not explaining something clearly, Google is very useful. R has a thriving community online, and you can often find an answer to your question on a StackOverflow post or through some sort of guide, tutorial, or YouTube video. For a more thorough explanation of R in general, see https://adv-r.hadley.nz/, which is an online version of the book 'Advanced R', written by Hadley Wickham. Hadley is a big deal in the R community and is the author of many of the `tidyverse` packages. 
+>> Tip: If help files alone are not explaining something clearly, Google is very useful. R has a thriving community online, and you can often find an answer to your question on a StackOverflow post or through some sort of guide, tutorial, or YouTube video. For a more thorough explanation of R in general, see https://adv-r.hadley.nz/, which is an online version of the book 'Advanced R', written by Hadley Wickham. Hadley is a big deal in the R community and is the author of many of the `tidyverse` packages. 
 </blockquote>
